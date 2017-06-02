@@ -74,7 +74,7 @@ void Percolation::open( int row, int col ) {
 		}
 	}
 	if ( col < grid.size() -1 ) {
-		if ( isOpen( row, col ) ) {
+		if ( isOpen( row, col +1 ) ) {
 			grid[row][col]->add_neighbour( grid[row][col +1] );
 			grid[row][col +1]->add_neighbour( grid[row][col] );
 		}
@@ -102,15 +102,15 @@ void Percolation::print_grid() {
 	cout << "Open/closed representation:\n";
 	for ( unsigned int row = 0; row < grid.size(); row++ ){
 		for ( unsigned int col = 0; col < grid.size(); col++ ){
-			cout << ( grid[col][row]->is_open() ? 'O' : 'C' );
+			cout << ( grid[col][row]->is_open() ? 'O' : 'X' ) << '\t';
 		}
 		cout << '\n';
 		}
-	cout << "\nID representation\n";
+	cout << "\n";
 
 	for ( unsigned int row = 0; row < grid.size(); row++ ){
 		for ( unsigned int col = 0; col < grid.size(); col++ ){
-			cout << grid[col][row]->get_id();
+			cout << grid[col][row]->get_id() << '\t';
 		}
 		cout << '\n';
 		}

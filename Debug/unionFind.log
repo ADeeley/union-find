@@ -1,5 +1,3 @@
-﻿  percolation.cpp
-c:\users\adam\documents\visual studio 2017\projects\unionfind\unionfind\percolation.cpp(64): warning C4018: '<': signed/unsigned mismatch
-c:\users\adam\documents\visual studio 2017\projects\unionfind\unionfind\percolation.cpp(76): warning C4018: '<': signed/unsigned mismatch
+﻿  Source.cpp
   unionFind.vcxproj -> C:\Users\Adam\documents\visual studio 2017\Projects\unionFind\Debug\unionFind.exe
   unionFind.vcxproj -> C:\Users\Adam\documents\visual studio 2017\Projects\unionFind\Debug\unionFind.pdb (Partial PDB)
