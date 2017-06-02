@@ -10,8 +10,8 @@ void add_sector_test() {
 	s->add_neighbour( e );
 	s->add_neighbour( f );
 	s->add_neighbour( y );
-	for ( Sector* sect : s->get_neighbours() )
-		cout << sect->get_id() << '\n';
+	//for ( Sector* sect : s->get_neighbours() )
+	//	cout << sect->get_id() << '\n';
 	assert( s->get_neighbours()[0]->get_id() == 3 );
 	assert( s->get_neighbours()[1]->get_id() == 2 );
 	assert( s->get_neighbours()[2]->get_id() == 1 );

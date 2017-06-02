@@ -51,13 +51,34 @@ Percolation::Percolation( int n ) {
 	assert( grid.size()  == n);
 }
 
-void Percolation::open( int col, int row ) {
+void Percolation::open( int row, int col ) {
 	// only concerned with opening the current sector and linking it to any adjacent 
 	// open sectors
-	grid[col][row]->open_up();
-	if ( row > 0 )
-		if ( isOpen( col, row - 1 ) )
-			grid[col][row]->add_neighbour( grid[col][row - 1] );
+	grid[row][col]->open_up();
+	if ( row > 0 ) {
+		if ( isOpen( row - 1, col ) ) {
+			grid[row][col]->add_neighbour( grid[row - 1][col] );
+			grid[row - 1][col]->add_neighbour( grid[row][col] );
+		}
+	}
+	if ( row < grid.size() -1 ) {
+		if ( isOpen( row + 1, col ) ) {
+			grid[row][col]->add_neighbour( grid[row + 1][col] );
+			grid[row + 1][col]->add_neighbour( grid[row][col] );
+		}
+	}
+	if ( col > 0 ) {
+		if ( isOpen( row, col -1 ) ) {
+			grid[row][col]->add_neighbour( grid[row][col -1] );
+			grid[row][col -1]->add_neighbour( grid[row][col] );
+		}
+	}
+	if ( col < grid.size() -1 ) {
+		if ( isOpen( row, col ) ) {
+			grid[row][col]->add_neighbour( grid[row][col +1] );
+			grid[row][col +1]->add_neighbour( grid[row][col] );
+		}
+	}
 }
 
 bool Percolation::isOpen( int col, int row ) {
@@ -78,13 +99,14 @@ int Percolation::numberOfOpenSites() {
 }
 
 void Percolation::print_grid() {
+	cout << "Open/closed representation:\n";
 	for ( unsigned int row = 0; row < grid.size(); row++ ){
 		for ( unsigned int col = 0; col < grid.size(); col++ ){
-			cout << ( grid[col][row]->is_open() ) ? 'o' : 'c';
+			cout << ( grid[col][row]->is_open() ? 'O' : 'C' );
 		}
 		cout << '\n';
 		}
-	cout << '\n';
+	cout << "\nID representation\n";
 
 	for ( unsigned int row = 0; row < grid.size(); row++ ){
 		for ( unsigned int col = 0; col < grid.size(); col++ ){
